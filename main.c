@@ -117,6 +117,8 @@ int main()
 
 			if(condition == 1) printf("yes\n");
 			else printf("no\n");
+		    for(b = 0; b < 2; b++)
+			    free(cell[b]);
 	}
 	return 0;
 }
