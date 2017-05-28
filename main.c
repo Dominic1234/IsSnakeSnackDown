@@ -93,7 +93,12 @@ int main(int argc, char **argv)
 						}
 					else if(prev == 2)
 						{
-						if(cell[0][col] == 1)
+						if(cell[0][col] == 1 && cell[1][col] == 1)
+						{
+							//skip card
+						}
+
+					else if(cell[0][col] == 1)
 							{
 							prev = 0;
 							}
