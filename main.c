@@ -21,7 +21,7 @@ int main()
 		if (debug) printf ("\tReading inputs\n");
 		for(count1 = 0; count1 < 2; count1++)
 		{
-			printf("\t");
+			//printf("\t");
 			for(count2 = 0; count2 < n; count2++)
 			{
 				do {
