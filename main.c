@@ -65,7 +65,7 @@ int main()
 											{
 												if(cell[0][count2+1] == 1 && cell[1][count2+1] == 0)
 												{
-
+													//yet to addd code
 												}
 											}
 										}
