@@ -1,9 +1,10 @@
 #include<stdio.h>
+#include<ctype.h>
 #include<stdlib.h>
 
 int debug = 0;
 
-int main(int argc, char **argv)
+int main()
 {
 	int t, n, a, b, count1, count2, condition, scelly, ecelly, prev, col;
 	char input;
@@ -25,7 +26,7 @@ int main(int argc, char **argv)
 			{
 				do {
 					scanf("%c", &input);
-				} while (input == '\r' || input == '\n');
+				} while (isspace(input));
 				if(input == '#') cell[count1][count2] = 1;
 				else cell[count1][count2] = 0;
 				if (debug) printf ("%c-%d, ", input, cell[count1][count2]);
