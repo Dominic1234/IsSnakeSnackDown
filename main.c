@@ -3,9 +3,9 @@
 
 int debug = 0;
 
-int main()
+int main(int argc, char **argv)
 {
-	int t, n, a, b, count1, count2, condition, scelly, ecelly;
+	int t, n, a, b, count1, count2, condition, scelly, ecelly, prev, col;
 	char input;
 	int *cell[2];
 	scanf("%d", &t);
@@ -49,6 +49,9 @@ int main()
 						{
 							//scell{x,y} stands for the x,y of the start cell
 							scelly = count2;
+							if(cell[1][count2] == 1 && cell[0][count2] == 1) prev = 2;
+							else if(cell[1][count2] == 1)prev = 1;
+							else if(cell[0][count2] == 1)prev = 0;
 							break;
 						}
 					}
@@ -62,26 +65,50 @@ int main()
 							break;
 						}
 					}
-			for(count2 = scelly; count2 < ecelly; count2++)
+			for(col = scelly+1; col <= ecelly; col++)
 				{
-					if(cell[0][count2] == 0)
+				if(prev == 0)
 					{
-						if(cell[1][count2] == 0) condition = 0;
+					if(cell[0][col] == 0)
+						{
+						condition = 0;
+						break;
+						}
+						else if(cell[1][col] == 1)
+							{
+							prev = 1;
+							}
 					}
-					if (cell[0][count2+1] == 0 && cell[1][count2] == 0)
-					condition = 0;
-					if(cell[1][count2+1] == 0 && cell[0][count2] == 0)condition = 0;
-					if(cell[0][count2] == 1)
-										{
-											if(cell[1][count2] == 1)
-											{
-												if(cell[0][count2+1] == 1 && cell[1][count2+1] == 0)
-												{
-													//yet to addd code
-												}
-											}
-										}
+					else if(prev == 1)
+						{
+						if(cell[1][col] == 0)
+							{
+							condition = 0;
+							break;
+							}
+						else if(cell[0][col] == 1)
+							{
+							prev = 0;
+							}
+						}
+					else if(prev == 2)
+						{
+						if(cell[0][col] == 1)
+							{
+							prev = 0;
+							}
+						else if(cell[1][col] == 1)
+							{
+							prev = 1;
+							}
+						else if(cell[0][col] == 0 && cell[1][col] == 0)
+							{
+							condition = 0;
+							break;
+							}
+						}
 				}
+
 			if(condition == 1) printf("yes\n");
 			else printf("no\n");
 	}
